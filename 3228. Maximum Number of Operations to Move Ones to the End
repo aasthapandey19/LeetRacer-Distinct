@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int maxOperations(string s) {
+        
+        int total =0;
+        int count=0;
+        for(int x=s.length()-1;x>-1;){
+            if(s[x]=='0'){
+                while(x>-1 && s[x]=='0')x--;
+                count++;
+            }
+            else if(s[x]=='1'){
+                total+=count;
+                x--;}
+        }
+        return total;
+    }
+};
