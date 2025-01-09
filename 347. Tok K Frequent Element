@@ -1,0 +1,43 @@
+class Solution {
+private:
+    int partition(vector<pair<int,int>>&mapper,int left,int right){
+        int pivotIndex=rand()%(right-left+1) +left;
+        int pivot=mapper[pivotIndex].first;
+        swap(mapper[pivotIndex],mapper[right]);
+        int sortedIndex=left;
+        for(int i=left;i<right;++i){
+            if(mapper[i].first<pivot){
+                swap(mapper[sortedIndex],mapper[i]);
+                sortedIndex++;
+            }
+        }
+        swap(mapper[right],mapper[sortedIndex]);
+        return sortedIndex;
+    }
+
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        vector<pair<int,int>>mapper;
+        unordered_map<int,int>mp;
+        for(auto x:nums)mp[x]++;
+        for(auto x:mp){
+            pair<int,int>p={x.second,x.first};
+            mapper.push_back(p);
+        }
+        int left=0;
+        int right=mapper.size()-1;
+        int n=mapper.size();
+       
+        while(true){
+            int index=partition(mapper,left,right);
+            if(index==n-k) break;
+            else if(index>n-k) right=index-1;
+            else left=index+1;
+        }
+        vector<int>result;
+        for(int i=n-k;i<mapper.size();++i){
+            result.push_back(mapper[i].second);
+        }
+        return result;
+    }
+};
