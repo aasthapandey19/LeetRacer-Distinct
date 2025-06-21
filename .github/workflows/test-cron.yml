@@ -1,3 +1,4 @@
+concurrency: test-cron
 name: Cron Test
 
 on:
