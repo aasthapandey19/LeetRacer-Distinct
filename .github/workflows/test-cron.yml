@@ -3,11 +3,11 @@ name: Cron Test
 
 on:
   schedule:
-    - cron: '*/2 * * * *'  # every 2 minutes
+    - cron: '*/20 * * * *'  # every 2 minutes
   workflow_dispatch:
 
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "✅ Cron ping ran at $(date)"
+      - run: echo "✅ Cron ping ran at $(date)::astha"
