@@ -2,7 +2,7 @@ name: Daily Commit Bot
 
 on:
   schedule:
-    - cron:  '*/2 * * * *'  # every day at 5:00 AM UTC
+    - cron: '*/2 * * * *'  # every 2 minutes for testing
   workflow_dispatch:
 
 jobs:
@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Make dummy change
       run: |
@@ -20,4 +22,4 @@ jobs:
         git config user.email "bot@example.com"
         git add daily-log.txt
         git commit -m "Daily update: $(date)" || echo "Nothing to commit"
-        git push
+        git push origin HEAD
