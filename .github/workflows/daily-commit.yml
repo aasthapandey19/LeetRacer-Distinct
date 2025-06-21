@@ -20,7 +20,7 @@ jobs:
       run: |
         echo "Update: $(date)" >> daily-log.txt
         git config user.name "daily-bot"
-        git config user.email "bot@example.com"
+        git config user.email "asthaprod99@gmail.com"
         git add daily-log.txt
         # Only commit if there are changes
         if git diff --staged --quiet; then
