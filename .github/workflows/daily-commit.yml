@@ -2,7 +2,7 @@ name: Daily Commit Bot
 
 on:
   schedule:
-    - cron: '*/3 * * * *'  # Every 5 minutes for testing
+    - cron: '*/10 * * * *'  # Every 5 minutes for testing
   workflow_dispatch:
 
 jobs:
